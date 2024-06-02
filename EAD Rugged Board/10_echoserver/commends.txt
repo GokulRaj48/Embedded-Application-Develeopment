@@ -1,0 +1,33 @@
+﻿Echo server commend 
+
+vim server.c
+vim main1.c
+vim server.h
+gcc main1.c server.c -o server_prog
+./server_prog
+
+(ctrl +c)
+
+vim client.c
+vim main2.c
+vim client.h
+=> poki tiny tool enable
+${cc} client.c main2.c -o client_prog
+sudo cp client_prog  var/lib/tftpboot/
+./server_prog
+
+minicom (sd card)
+
+root
+cd /
+cd data
+cd network
+vi interfaces (write the code)
+ auto lo
+iface lo inet loopback
+:wq
+
+ifconfig eth0 192.168.1.22
+tftp -g -r client_prog -l client_prog 192.168.1.30 
+chmod 777 client_prog
+./client_prog 192.168.1.30

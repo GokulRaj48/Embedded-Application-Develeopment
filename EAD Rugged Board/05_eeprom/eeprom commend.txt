@@ -1,0 +1,30 @@
+﻿Eeprom commends terminal
+
+
+vim eeprom.c
+vim eeprom.h
+vim main.c
+gcc eeprom.c main.c -o rb_hi
+./rb_hi
+
+(control +c)
+
+echo CC
+export=gcc
+=>poky-tiny tool enable
+file eeprom.c main.c
+${cc} main.c eeprom.c -o rb_hi
+cp rb_hi /var/lib/tftpboot/
+
+Minicom terminal
+
+root
+cd /
+ifconfig eth0 192.168.1.44  
+tftp -r  rb_hi -g 192.168.1.30 (devive number)
+chmod 777 rb_hi
+./rb_hi 
+
+
+
+
